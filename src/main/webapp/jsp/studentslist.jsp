@@ -12,7 +12,7 @@
     学生姓名:<input type="text" name="studentName">
     性别:
     <select name="sex">
-        <option value="0">--请选择--</option>
+        <option value="">--请选择--</option>
         <option value="1">男</option>
         <option value="2">女</option>
     </select>

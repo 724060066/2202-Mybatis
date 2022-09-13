@@ -10,8 +10,8 @@
         <if test="stName != null and stName != ''">
             and studentName like concat('%', #{stName} ,'%')
         </if>
-        <if test="sex != null and sex !='0'">
-            and sex = #{sex}s
+        <if test="sex != null and sex != ''">
+            and sex = #{sex}
         </if>
     </select>
 </mapper>
