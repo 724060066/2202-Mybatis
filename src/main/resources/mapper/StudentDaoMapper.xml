@@ -2,16 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buba.dao.StudentDao">
-    <select id="listStudent" resultType="com.buba.pojo.Students">
-        select * from students where 1=1
-        <if test="stCode != null and stCode != ''">
-            and studentCode like concat('%', #{stCode} ,'%')
-        </if>
-        <if test="stName != null and stName != ''">
-            and studentName like concat('%', #{stName} ,'%')
-        </if>
-        <if test="sex != null and sex != ''">
-            and sex = #{sex}
-        </if>
+
+    <resultMap id="studentAndDangan" type="Students">
+        <id column="id" property="id"></id>
+        <result column="studentCode" property="studentCode"></result>
+        <result column="studentName" property="studentName"></result>
+        <result column="age" property="age"></result>
+        <result column="sex" property="sex"></result>
+        <result column="phone" property="phone"></result>
+        <result column="shichangbu" property="dangan.shichangbu"></result>
+        <result column="jiguan" property="dangan.jiguan"></result>
+        <result column="minzu" property="dangan.minzu"></result>
+        <result column="className" property="classes.className"></result>
+    </resultMap>
+
+    <!--    <select id="listStudent" resultType="com.buba.pojo.Students">-->
+    <select id="listStudent" resultMap="studentAndDangan">
+        select
+               s.*,
+               d.shichangbu,
+               d.jiguan,
+               d.minzu,
+               c.className
+        from students s
+        left join dangan d
+        on d.id = s.danganId
+        left join classes c
+        on c.id = s.classId
+        <where>
+            <if test="stCode != null and stCode != ''">
+                and studentCode like concat('%', #{stCode} ,'%')
+            </if>
+            <if test="stName != null and stName != ''">
+                and studentName like concat('%', #{stName} ,'%')
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+        </where>
     </select>
 </mapper>

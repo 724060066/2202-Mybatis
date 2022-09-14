@@ -1,6 +1,5 @@
 package com.buba.pojo;
 
-
 import java.util.List;
 
 public class Classes {

@@ -20,14 +20,19 @@
 </form>
 <table>
     <tr>
+        <th>班级</th>
         <th>学生编号</th>
         <th>学生姓名</th>
         <th>年龄</th>
         <th>性别</th>
         <th>电话</th>
+        <th>市场部</th>
+        <th>籍贯</th>
+        <th>民族</th>
     </tr>
     <c:forEach items="${studentsList}" var="students">
         <tr>
+            <td>${students.classes.className}</td>
             <td>${students.studentCode}</td>
             <td>${students.studentName}</td>
             <td>${students.age}</td>
@@ -36,6 +41,9 @@
                 <c:if test="${students.sex == '2'}">女</c:if>
             </td>
             <td>${students.phone}</td>
+            <td>${students.dangan.shichangbu}</td>
+            <td>${students.dangan.jiguan}</td>
+            <td>${students.dangan.minzu}</td>
         </tr>
     </c:forEach>
 </table>
