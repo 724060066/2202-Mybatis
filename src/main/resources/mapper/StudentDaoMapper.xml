@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buba.dao.StudentDao">
 
-    <resultMap id="studentAndDangan" type="Students">
+    <resultMap id="studentAndDangan" type="Students" autoMapping="true">
         <id column="id" property="id"></id>
         <result column="studentCode" property="studentCode"></result>
         <result column="studentName" property="studentName"></result>
@@ -40,5 +40,16 @@
                 and sex = #{sex}
             </if>
         </where>
+    </select>
+
+    <select id="listStudentByClassId" resultMap="studentAndDangan">
+        select
+            s.*,
+            d.shichangbu,
+            d.jiguan
+        from students s
+                 left join dangan d
+                           on s.danganId = d.id
+        where s.classId = #{cId};
     </select>
 </mapper>

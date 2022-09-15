@@ -23,4 +23,14 @@ public class StudentServiceImpl implements StudentService{
     public List<Students> listStudent(String studentCode, String studentName, String sex) {
         return studentDao.listStudent(studentCode, studentName, sex);
     }
+
+    /**
+     * 根据班级id取得学生信息列表
+     * @param cId
+     * @return
+     */
+    @Override
+    public List<Students> listStudentByClassId(String cId) {
+        return studentDao.listStudentByClassId(cId);
+    }
 }

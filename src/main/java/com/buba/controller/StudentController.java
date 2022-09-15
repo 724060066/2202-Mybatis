@@ -32,4 +32,21 @@ public class StudentController {
 
         return "studentslist";
     }
+
+    /**
+     * 根据班级id取得学生信息列表
+     * @param model
+     * @param cId
+     * @return
+     */
+    @RequestMapping("/listStudentByClassId")
+    public String listStudentByClassId(Model model, String cId, String cName) {
+
+        List<Students> studentsList = studentService.listStudentByClassId(cId);
+
+        model.addAttribute("studentsList", studentsList);
+        model.addAttribute("cName", cName);
+
+        return "studentslist1";
+    }
 }
