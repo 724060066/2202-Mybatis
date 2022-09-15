@@ -2,28 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buba.dao.StudentDao">
-
-    <resultMap id="studentAndDangan" type="Students" autoMapping="true">
+    <!-- 第一种方式：级联查询-start-
+             pojo1里包含另一个pojo2，使用:pojo1.pojo2.属性  的方式进行映射
+           -->
+<!--    <resultMap id="studentAndDangan" type="Students" autoMapping="true">-->
 <!--        <id column="id" property="id"></id>-->
 <!--        <result column="studentCode" property="studentCode"></result>-->
 <!--        <result column="studentName" property="studentName"></result>-->
 <!--        <result column="age" property="age"></result>-->
 <!--        <result column="sex" property="sex"></result>-->
 <!--        <result column="phone" property="phone"></result>-->
-        <result column="shichangbu" property="dangan.shichangbu"></result>
-        <result column="jiguan" property="dangan.jiguan"></result>
-        <result column="minzu" property="dangan.minzu"></result>
-        <result column="className" property="classes.className"></result>
+<!--        <result column="shichangbu" property="dangan.shichangbu"></result>-->
+<!--        <result column="jiguan" property="dangan.jiguan"></result>-->
+<!--        <result column="minzu" property="dangan.minzu"></result>-->
+<!--        <result column="className" property="classes.className"></result>-->
+<!--    </resultMap>-->
+    <!--    第一种方式：级联查询-end-   -->
+
+    <!--    第二种方式：嵌套结果-start-
+            association中的javaType：需要映射的pojo的类型
+    -->
+    <resultMap id="studentAndDangan" type="Students" autoMapping="true">
+        <id column="id" property="id"></id>
+<!--        <result column="studentCode" property="studentCode"></result>-->
+<!--        <result column="studentName" property="studentName"></result>-->
+<!--        <result column="age" property="age"></result>-->
+<!--        <result column="sex" property="sex"></result>-->
+        <association property="dangan" javaType="Dangan" autoMapping="true">
+            <id column="did" property="id"></id>
+<!--            <result column="shichangbu" property="shichangbu"></result>-->
+<!--            <result column="jiguan" property="jiguan"></result>-->
+<!--            <result column="minzu" property="minzu"></result>-->
+        </association>
+        <association property="classes" javaType="Classes" autoMapping="true">
+<!--            <result column="className" property="className"></result>-->
+        </association>
     </resultMap>
+    <!--    第二种方式：嵌套结果-end-->
+
 
     <!--    <select id="listStudent" resultType="com.buba.pojo.Students">-->
     <select id="listStudent" resultMap="studentAndDangan">
         select
+               c.*,
+               c.id cid,
                s.*,
-               d.shichangbu,
-               d.jiguan,
-               d.minzu,
-               c.className
+               d.id did,
+               d.*
         from students s
         left join dangan d
         on d.id = s.danganId
