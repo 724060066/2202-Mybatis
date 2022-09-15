@@ -4,12 +4,12 @@
 <mapper namespace="com.buba.dao.StudentDao">
 
     <resultMap id="studentAndDangan" type="Students" autoMapping="true">
-        <id column="id" property="id"></id>
-        <result column="studentCode" property="studentCode"></result>
-        <result column="studentName" property="studentName"></result>
-        <result column="age" property="age"></result>
-        <result column="sex" property="sex"></result>
-        <result column="phone" property="phone"></result>
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="studentCode" property="studentCode"></result>-->
+<!--        <result column="studentName" property="studentName"></result>-->
+<!--        <result column="age" property="age"></result>-->
+<!--        <result column="sex" property="sex"></result>-->
+<!--        <result column="phone" property="phone"></result>-->
         <result column="shichangbu" property="dangan.shichangbu"></result>
         <result column="jiguan" property="dangan.jiguan"></result>
         <result column="minzu" property="dangan.minzu"></result>
