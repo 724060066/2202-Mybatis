@@ -7,7 +7,7 @@ import java.util.List;
 public interface StudentService {
 
     /**
-     * 查询班级列表
+     * 查询学生列表
      * @param studentCode
      * @param studentName
      * @param sex

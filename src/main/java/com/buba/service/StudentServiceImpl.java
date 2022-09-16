@@ -19,6 +19,13 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     private StudentDao studentDao;
 
+    /**
+     * 查询学生列表
+     * @param studentCode
+     * @param studentName
+     * @param sex
+     * @return
+     */
     @Override
     public List<Students> listStudent(String studentCode, String studentName, String sex) {
         return studentDao.listStudent(studentCode, studentName, sex);

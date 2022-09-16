@@ -23,6 +23,14 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    /**
+     * 查询学生列表
+     * @param model
+     * @param studentCode
+     * @param studentName
+     * @param sex
+     * @return
+     */
     @RequestMapping("/listStudent")
     public String listStudent(Model model, String studentCode,
                               String studentName, String sex) {

@@ -27,4 +27,13 @@ public class ClassServiceImpl implements ClassService{
     public List<Classes> listClass() {
         return classDao.listClass();
     }
+
+    /**
+     * 查询所有班级和学生
+     * @return
+     */
+    @Override
+    public List<Classes> listClassAndStudent() {
+        return classDao.listClassAndStudent();
+    }
 }

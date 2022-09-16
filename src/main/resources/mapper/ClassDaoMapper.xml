@@ -3,8 +3,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buba.dao.ClassDao">
 
+<!--    查询班级列表-->
     <select id="listClass" resultType="Classes">
         select * from classes
     </select>
 
+    <!--    一对多映射：
+        使用collection；
+        javaType和ofType：
+            一对一使用javaType，一对多使用ofType
+-->
+    <resultMap id="classAndStudent" type="Classes" autoMapping="true">
+        <id column="cid" property="id"></id>
+        <result column="className" property="className"></result>
+        <collection property="studentsList" ofType="Students">
+            <id column="sid" property="id"></id>
+            <result column="studentCode" property="studentCode"></result>
+            <result column="studentName" property="studentName"></result>
+            <result column="age" property="age"></result>
+            <result column="sex" property="sex"></result>
+            <result column="phone" property="phone"></result>
+        </collection>
+    </resultMap>
+
+<!--    查询所有班级和学生-->
+    <select id="listClassAndStudent" resultMap="classAndStudent">
+        select
+            c.id cid,
+            c.className,
+            s.id sid,
+            s.studentCode,
+            s.studentName,
+            s.age,
+            s.sex,
+            s.phone
+        from classes c
+                 left join students s
+                           on s.classId = c.id
+    </select>
 </mapper>

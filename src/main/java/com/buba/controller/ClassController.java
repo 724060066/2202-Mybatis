@@ -22,6 +22,11 @@ public class ClassController {
     @Autowired
     ClassService classService;
 
+    /**
+     * 查询班级列表
+     * @param model
+     * @return
+     */
     @RequestMapping("/listClass")
     public String listClass(Model model) {
         List<Classes> classesList = classService.listClass();
@@ -29,5 +34,20 @@ public class ClassController {
         model.addAttribute("classesList", classesList);
 
         return "classlist";
+    }
+
+    /**
+     * 查询所有班级和学生
+     * @param model
+     * @return
+     */
+    @RequestMapping("/listClassAndStudent")
+    public String listClassAndStudent(Model model) {
+
+        List<Classes> classesList = classService.listClassAndStudent();
+
+        model.addAttribute("classesList", classesList);
+
+        return "classandstudents";
     }
 }

@@ -7,6 +7,13 @@ import java.util.List;
 
 public interface StudentDao {
 
+    /**
+     * 查询学生列表
+     * @param studentCode
+     * @param studentName
+     * @param sex
+     * @return
+     */
     List<Students> listStudent(@Param("stCode") String studentCode, @Param("stName") String studentName, @Param("sex") String sex);
 
     /**

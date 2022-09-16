@@ -11,4 +11,10 @@ public interface ClassService {
      * @return
      */
     List<Classes> listClass();
+
+    /**
+     * 查询所有班级和学生
+     * @return
+     */
+    List<Classes> listClassAndStudent();
 }
