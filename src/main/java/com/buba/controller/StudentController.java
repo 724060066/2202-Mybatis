@@ -1,6 +1,8 @@
 package com.buba.controller;
 
+import com.buba.pojo.Classes;
 import com.buba.pojo.Students;
+import com.buba.service.ClassService;
 import com.buba.service.StudentService;
 import com.buba.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private ClassService classService;
+
     /**
      * 查询学生列表
      * @param model
@@ -39,6 +44,56 @@ public class StudentController {
         model.addAttribute("studentsList", studentsList);
 
         return "studentslist";
+    }
+
+    /**
+     * 初始化添加页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/getClassForInsert")
+    public String getClassForInsert(Model model) {
+        List<Classes> classesList = classService.listClass();
+        model.addAttribute("classesList", classesList);
+        return "studentsadd";
+    }
+
+    /**
+     * 添加学生信息
+     * @param students
+     * @return
+     */
+    @RequestMapping("/insertStudent")
+    public String insertStudent(Students students) {
+        studentService.insertStudent(students);
+        return "redirect:/student/listStudent";
+    }
+
+    /**
+     * 初始化修改页面
+     * @param model
+     * @param sId
+     * @return
+     */
+    @RequestMapping("/getClassForUpdate")
+    public String getClassForUpdate(Model model, String sId) {
+        Students student = studentService.getStudentById(sId);
+        model.addAttribute("student", student);
+
+        List<Classes> classesList = classService.listClass();
+        model.addAttribute("classesList", classesList);
+        return "studentsupdate";
+    }
+
+    /**
+     * 根据id修改学生信息
+     * @param students
+     * @return
+     */
+    @RequestMapping("/updateStudentById")
+    public String updateStudentById(Students students) {
+        studentService.updateStudentById(students);
+        return "redirect:/student/listStudent";
     }
 
     /**

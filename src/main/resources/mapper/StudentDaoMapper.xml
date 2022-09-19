@@ -23,7 +23,7 @@
             association中的javaType：需要映射的pojo的类型
     -->
     <resultMap id="studentAndDangan" type="Students" autoMapping="true">
-        <id column="id" property="id"></id>
+        <id column="sid" property="id"></id>
 <!--        <result column="studentCode" property="studentCode"></result>-->
 <!--        <result column="studentName" property="studentName"></result>-->
 <!--        <result column="age" property="age"></result>-->
@@ -35,6 +35,7 @@
 <!--            <result column="minzu" property="minzu"></result>-->
         </association>
         <association property="classes" javaType="Classes" autoMapping="true">
+            <id column="cid" property="id"></id>
 <!--            <result column="className" property="className"></result>-->
         </association>
     </resultMap>
@@ -44,8 +45,9 @@
     <!--    <select id="listStudent" resultType="com.buba.pojo.Students">-->
     <select id="listStudent" resultMap="studentAndDangan">
         select
-               c.*,
                c.id cid,
+               c.*,
+               s.id sid,
                s.*,
                d.id did,
                d.*
@@ -78,4 +80,36 @@
                            on s.danganId = d.id
         where s.classId = #{cId};
     </select>
+
+    <insert id="insertStudent" parameterType="Students">
+        insert into students(studentCode,
+                             studentName,
+                             age,
+                             sex,
+                             phone,
+                             classId)
+        values (#{studentCode},
+                #{studentName},
+                #{age},
+                #{sex},
+                #{phone},
+                #{classId}
+                )
+    </insert>
+
+    <select id="getStudentById" resultType="Students">
+        select * from students where id = #{sId}
+    </select>
+
+    <update id="updateStudentById" parameterType="Students">
+        update
+            students set
+                studentCode = #{studentCode},
+                studentName = #{studentName},
+                age = #{age},
+                sex = #{sex},
+                phone = #{phone},
+                classId = #{classId}
+        where id = #{id}
+    </update>
 </mapper>

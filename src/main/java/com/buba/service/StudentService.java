@@ -16,9 +16,28 @@ public interface StudentService {
     List<Students> listStudent(String studentCode, String studentName, String sex);
 
     /**
+     * 添加学生信息
+     * @param students
+     */
+    void insertStudent(Students students);
+
+    /**
      * 根据班级id取得学生信息列表
      * @param cId
      * @return
      */
     List<Students> listStudentByClassId(String cId);
+
+    /**
+     * 根据id取得学生信息
+     * @param sId
+     * @return
+     */
+    Students getStudentById(String sId);
+
+    /**
+     * 根据id修改学生信息
+     * @param students
+     */
+    void updateStudentById(Students students);
 }

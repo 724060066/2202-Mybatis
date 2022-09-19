@@ -32,6 +32,15 @@ public class StudentServiceImpl implements StudentService{
     }
 
     /**
+     * 添加学生信息
+     * @param students
+     */
+    @Override
+    public void insertStudent(Students students) {
+        studentDao.insertStudent(students);
+    }
+
+    /**
      * 根据班级id取得学生信息列表
      * @param cId
      * @return
@@ -39,5 +48,24 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<Students> listStudentByClassId(String cId) {
         return studentDao.listStudentByClassId(cId);
+    }
+
+    /**
+     * 根据id取得学生信息
+     * @param sId
+     * @return
+     */
+    @Override
+    public Students getStudentById(String sId) {
+        return studentDao.getStudentById(sId);
+    }
+
+    /**
+     * 根据id修改学生信息
+     * @param students
+     */
+    @Override
+    public void updateStudentById(Students students) {
+        studentDao.updateStudentById(students);
     }
 }

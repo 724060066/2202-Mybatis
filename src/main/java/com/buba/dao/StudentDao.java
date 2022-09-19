@@ -22,4 +22,24 @@ public interface StudentDao {
      * @return
      */
     List<Students> listStudentByClassId(String cId);
+
+    /**
+     * 添加学生信息
+     * @param students
+     */
+    int insertStudent(Students students);
+
+    /**
+     * 根据id取得学生信息
+     * @param sId
+     * @return
+     */
+    Students getStudentById(String sId);
+
+    /**
+     * 根据id修改学生信息
+     * @param students
+     * @return
+     */
+    int updateStudentById(Students students);
 }

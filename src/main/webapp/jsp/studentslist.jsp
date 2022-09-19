@@ -18,6 +18,7 @@
     </select>
     <button type="submit">查询</button>
 </form>
+<a href="${pageContext.request.contextPath }/student/getClassForInsert">添加学生</a>
 <table>
     <tr>
         <th>班级</th>
@@ -29,6 +30,7 @@
         <th>市场部</th>
         <th>籍贯</th>
         <th>民族</th>
+        <th></th>
     </tr>
     <c:forEach items="${studentsList}" var="students">
         <tr>
@@ -44,6 +46,10 @@
             <td>${students.dangan.shichangbu}</td>
             <td>${students.dangan.jiguan}</td>
             <td>${students.dangan.minzu}</td>
+            <td>
+                <a href="${pageContext.request.contextPath }/student/getClassForUpdate?sId=${students.id}">修改</a>
+                <a href="">删除</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
