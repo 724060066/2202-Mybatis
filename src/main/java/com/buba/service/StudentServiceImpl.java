@@ -68,4 +68,13 @@ public class StudentServiceImpl implements StudentService{
     public void updateStudentById(Students students) {
         studentDao.updateStudentById(students);
     }
+
+    /**
+     * 根据id删除学生
+     * @param sId
+     */
+    @Override
+    public void removeStudentById(String sId) {
+        studentDao.removeStudentById(sId);
+    }
 }

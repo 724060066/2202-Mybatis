@@ -112,4 +112,8 @@
                 classId = #{classId}
         where id = #{id}
     </update>
+
+    <delete id="removeStudentById">
+        delete from students where id = #{sId}
+    </delete>
 </mapper>

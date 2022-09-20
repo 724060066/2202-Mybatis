@@ -4,7 +4,6 @@ import com.buba.pojo.Classes;
 import com.buba.pojo.Students;
 import com.buba.service.ClassService;
 import com.buba.service.StudentService;
-import com.buba.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,6 +65,12 @@ public class StudentController {
     @RequestMapping("/insertStudent")
     public String insertStudent(Students students) {
         studentService.insertStudent(students);
+        return "redirect:/student/listStudent";
+    }
+
+    @RequestMapping("/removeStudentById")
+    public String removeStudentById(String sId) {
+        studentService.removeStudentById(sId);
         return "redirect:/student/listStudent";
     }
 

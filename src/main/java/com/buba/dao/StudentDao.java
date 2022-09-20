@@ -42,4 +42,11 @@ public interface StudentDao {
      * @return
      */
     int updateStudentById(Students students);
+
+    /**
+     * 根据id删除学生
+     * @param sId
+     * @return
+     */
+    int removeStudentById(String sId);
 }

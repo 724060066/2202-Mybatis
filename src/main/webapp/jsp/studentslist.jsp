@@ -48,7 +48,7 @@
             <td>${students.dangan.minzu}</td>
             <td>
                 <a href="${pageContext.request.contextPath }/student/getClassForUpdate?sId=${students.id}">修改</a>
-                <a href="">删除</a>
+                <a href="${pageContext.request.contextPath }/student/removeStudentById?sId=${students.id}">删除</a>
             </td>
         </tr>
     </c:forEach>

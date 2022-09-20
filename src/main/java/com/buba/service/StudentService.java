@@ -40,4 +40,10 @@ public interface StudentService {
      * @param students
      */
     void updateStudentById(Students students);
+
+    /**
+     * 根据id删除学生
+     * @param sId
+     */
+    void removeStudentById(String sId);
 }
