@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.dao.LianDongDao">
+
+    <select id="listProvince" resultType="Province">
+        select * from Province
+    </select>
+
+    <select id="listCity" resultType="City">
+        select * from city where provinceID = #{provinceId}
+    </select>
+</mapper>
