@@ -21,7 +21,12 @@
             <option value="${cla.id}">${cla.className}</option>
         </c:forEach>
     </select><br>
-
+    <hr>
+所属市场部:<input type="text" name="dangan.shichangbu"><br>
+    籍贯:<input type="text" name="dangan.jiguan"><br>
+    民族:<input type="text" name="dangan.minzu"><br>
+    监护人:<input type="text" name="dangan.jianhuren"><br>
+    监护人电话:<input type="text" name="dangan.phone"><br>
     <button type="submit">添加</button>
 </form>
 </body>

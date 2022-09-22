@@ -1,6 +1,8 @@
 package com.buba.service;
 
+import com.buba.dao.DangAnDao;
 import com.buba.dao.StudentDao;
+import com.buba.pojo.Dangan;
 import com.buba.pojo.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class StudentServiceImpl implements StudentService{
 
     @Autowired
     private StudentDao studentDao;
+    @Autowired
+    private DangAnDao dangAnDao;
 
     /**
      * 查询学生列表
@@ -37,6 +41,9 @@ public class StudentServiceImpl implements StudentService{
      */
     @Override
     public void insertStudent(Students students) {
+        Dangan dangan = students.getDangan();
+        dangAnDao.insertDangAn(dangan);
+        students.setDanganId(dangan.getId());
         studentDao.insertStudent(students);
     }
 

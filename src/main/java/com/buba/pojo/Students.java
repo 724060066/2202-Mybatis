@@ -3,14 +3,14 @@ package com.buba.pojo;
 
 public class Students {
 
-  private Integer id;
+  private long id;
   private String studentCode;
   private String studentName;
-  private Integer age;
+  private long age;
   private String sex;
   private String phone;
-  private Integer classId;
-  private Integer danganId;
+  private long classId;
+  private long danganId;
 
   private Dangan dangan;
 
@@ -32,45 +32,23 @@ public class Students {
     this.dangan = dangan;
   }
 
-    public Integer getId() {
-        return id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public Integer getAge() {
-        return age;
-    }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getClassId() {
-        return classId;
-    }
-
-    public void setClassId(Integer classId) {
-        this.classId = classId;
-    }
-
-    public Integer getDanganId() {
-        return danganId;
-    }
-
-    public void setDanganId(Integer danganId) {
-        this.danganId = danganId;
-    }
-
-    public String getStudentCode() {
+  public String getStudentCode() {
     return studentCode;
   }
 
   public void setStudentCode(String studentCode) {
     this.studentCode = studentCode;
   }
+
 
   public String getStudentName() {
     return studentName;
@@ -79,6 +57,16 @@ public class Students {
   public void setStudentName(String studentName) {
     this.studentName = studentName;
   }
+
+
+  public long getAge() {
+    return age;
+  }
+
+  public void setAge(long age) {
+    this.age = age;
+  }
+
 
   public String getSex() {
     return sex;
@@ -95,6 +83,24 @@ public class Students {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+
+  public long getClassId() {
+    return classId;
+  }
+
+  public void setClassId(long classId) {
+    this.classId = classId;
+  }
+
+
+  public long getDanganId() {
+    return danganId;
+  }
+
+  public void setDanganId(long danganId) {
+    this.danganId = danganId;
   }
 
 }

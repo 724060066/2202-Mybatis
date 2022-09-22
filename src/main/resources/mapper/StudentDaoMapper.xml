@@ -87,13 +87,15 @@
                              age,
                              sex,
                              phone,
-                             classId)
+                             classId,
+                             danganId)
         values (#{studentCode},
                 #{studentName},
                 #{age},
                 #{sex},
                 #{phone},
-                #{classId}
+                #{classId},
+                #{danganId}
                 )
     </insert>
 
